@@ -1,0 +1,12 @@
+#!/bin/bash
+
+SERVER="${KAFKA_BOOTSTRAP_SERVER_URL}"
+
+echo
+echo "Listening to the topic ${TOPIC_NAME}"
+kafka-console-consumer.sh \
+    --bootstrap-server ${SERVER} \
+    --topic ${TOPIC_NAME} \
+    --from-beginning
+
+echo

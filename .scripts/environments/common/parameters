@@ -1,0 +1,11 @@
+#!/bin/bash
+
+export KAFKA_CONNECT_URL="http://localhost:8083"
+export KAFKA_BOOTSTRAP_SERVER_URL="http://localhost:29092"
+export SCHEMA_REGISTRY_URL="http://localhost:8082"
+
+echo "KAFKA_CONNECT_URL = ${KAFKA_CONNECT_URL}"
+echo "KAFKA_BOOTSTRAP_SERVER_URL = ${KAFKA_BOOTSTRAP_SERVER_URL}"
+echo "SCHEMA_REGISTRY_URL = ${SCHEMA_REGISTRY_URL}"
+
+echo

@@ -1,0 +1,8 @@
+Reference
+https://github.com/saubury/kafka-connect-oracle-cdc
+
+Schema-registry Rest API
+https://docs.confluent.io/platform/current/schema-registry/develop/using.html
+
+Download the jdbc conector and mount to the docker container
+https://www.confluent.io/hub/confluentinc/kafka-connect-jdbc

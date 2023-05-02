@@ -1,0 +1,9 @@
+#!/bin/bash
+
+SERVER="${KAFKA_BOOTSTRAP_SERVER_URL}"
+
+echo
+echo "Deleting the topic - ${TOPIC_NAME}"
+
+kafka-topics.sh --bootstrap-server ${SERVER} --delete --topic ${TOPIC_NAME}
+echo

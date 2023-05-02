@@ -1,0 +1,5 @@
+#!/bin/bash
+
+curl -s -X GET -H 'Content-Type: application/json' http://localhost:8083/connector-plugins
+
+echo

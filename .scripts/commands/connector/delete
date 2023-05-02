@@ -1,0 +1,9 @@
+#!/bin/bash
+
+echo ${CONNECTOR_NAME}
+
+URL="${KAFKA_CONNECT_URL}/connectors/${CONNECTOR_NAME}/"
+
+curl -i -X DELETE ${URL}
+
+echo

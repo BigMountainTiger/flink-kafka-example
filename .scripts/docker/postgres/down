@@ -1,0 +1,6 @@
+#!/bin/bash
+
+cd .scripts/docker/postgres/
+pwd
+
+docker compose down

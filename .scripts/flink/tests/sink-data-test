@@ -1,0 +1,10 @@
+#!/bin/bash
+
+source .scripts/flink/tests/.env
+
+cd flink-example/
+
+pwd
+
+echo
+mvn clean test -Dtest="Sink_Data_Test"
