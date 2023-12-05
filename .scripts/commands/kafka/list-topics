@@ -1,0 +1,8 @@
+#!/bin/bash
+
+SERVER="${KAFKA_BOOTSTRAP_SERVER_URL}"
+
+echo "Listing the topics"
+kafka-topics.sh --bootstrap-server=${SERVER} --list
+
+echo

@@ -1,0 +1,9 @@
+#!/bin/bash
+
+
+echo ${CONNECTOR_NAME}
+
+URL="${KAFKA_CONNECT_URL}/connectors/${CONNECTOR_NAME}/resume"
+curl -i -X PUT -H "Accept:application/json" ${URL} 
+
+echo

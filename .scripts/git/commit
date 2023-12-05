@@ -1,0 +1,11 @@
+#!/bin/bash
+
+git reset --soft HEAD~
+git add-commit -m "Updated the flink-kafka-example"
+git push -f
+
+echo
+echo "Wait for a second ..."
+sleep 1
+
+git log

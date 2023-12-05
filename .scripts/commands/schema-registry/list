@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# https://docs.confluent.io/platform/current/schema-registry/develop/using.html
+
+URL="${SCHEMA_REGISTRY_URL}"
+echo "Schema registry URL = ${URL}"
+
+curl -X GET ${URL}/subjects
+
+echo

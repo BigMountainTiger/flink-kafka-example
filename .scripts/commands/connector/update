@@ -1,0 +1,11 @@
+#!/bin/bash
+
+echo ${CONNECTOR_NAME}
+echo ${CONNECTOR_CONFIG}
+echo "Updating the connector config"
+echo
+
+URL="${KAFKA_CONNECT_URL}/connectors/${CONNECTOR_NAME}/config"
+curl -i -X PUT -H "Content-Type:application/json" ${URL} --data "@${CONNECTOR_CONFIG}"
+
+echo

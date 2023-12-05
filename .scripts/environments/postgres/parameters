@@ -1,0 +1,11 @@
+#!/bin/bash
+
+source .scripts/environments/common/parameters
+
+export CONNECTOR_CONFIG="./.scripts/environments/postgres/config.json"
+export CONNECTOR_NAME="example_postgres-connector"
+export TOPIC_NAME="example_postgres_topic"
+
+echo "CONNECTOR_CONFIG => ${CONNECTOR_CONFIG}"
+echo "CONNECTOR_NAME => ${CONNECTOR_NAME}"
+echo "TOPIC_NAME => ${TOPIC_NAME}"
