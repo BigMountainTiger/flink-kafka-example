@@ -1,0 +1,4 @@
+#!/bin/bash
+
+TABLE_NAME="local_dynamodb_table"
+aws-local dynamodb delete-table --table-name $TABLE_NAME

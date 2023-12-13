@@ -24,11 +24,8 @@ hs_err_pid*
 replay_pid*
 
 .download
-flink-example/bin
-flink-example/target
-flink-sink-example/bin
-flink-sink-example/target
-flink-checkpoint-example/bin
-flink-checkpoint-example/target
+bin
+target
 .env
 /sink-ouput
+/sink-checkpoints

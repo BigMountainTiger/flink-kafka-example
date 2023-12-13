@@ -1,0 +1,27 @@
+#!/bin/bash
+
+ACTION=$1
+declare -a ACTIONS=("insert" "update" "delete")
+
+
+if ! [[ " ${ACTIONS[*]} " =~ " ${ACTION} " ]]; then
+    echo "Only the following operations are allowed"
+    echo "produce insert"
+    echo "produce update"
+    echo "produce delete"
+    exit 1
+fi
+
+SCRIPT_PATH="$(dirname -- "${BASH_SOURCE[0]}")"
+
+export BOOTSTRAP_SERVERS="localhost:9093";
+export SCHEMA_REGISTRY="http://localhost:8081";
+
+export TOPIC="avro-topic";
+export SCHEMA_FILE="$SCRIPT_PATH/../schema/schema.json";
+export DATA_FILE="$SCRIPT_PATH/../data/data-$ACTION.txt";
+
+cd $SCRIPT_PATH/../..
+
+pwd
+mvn test -Dtest="KafkaAvroProducerTest"

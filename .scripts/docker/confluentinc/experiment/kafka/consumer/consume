@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Check the docker-compose.yml for the URLs
+BROKER="localhost:9093"
+SCHEMA_REGISTRY="http://localhost:8081"
+
+TOPIC="example-topic"
+
+kafka-avro-console-consumer \
+    --bootstrap-server $BROKER \
+    --property schema.registry.url=$SCHEMA_REGISTRY \
+    --from-beginning \
+    --topic $TOPIC

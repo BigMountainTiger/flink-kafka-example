@@ -28,23 +28,26 @@ public class PostgresSQLSinkJob {
         var sql = "insert into public.student values(?, ?, ?, ?) ON CONFLICT (id) "
                 + "DO UPDATE SET name = ?, score = ?, pass = ?;";
 
+        // This has a test on null values
         var stm = env.fromElements(
-            new Student(1L, "Song Li", 100, true),
-            new Student(2L, "Joe Biden", 70, false)
-        );
+                new Student(1L, "Song Li", 100, true),
+                new Student(2L, "Joe Biden", 70, false),
+                new Student(3L, "Donald Trump", null, false),
+                new Student(4L, null, null, null));
 
         stm.addSink(
                 JdbcSink.sink(sql,
                         (statement, student) -> {
                             // 1. Index is 1 based
-                            // 2. Postgres driver requires strong type even though postgres takes integer as varchar
+                            // 2. Postgres driver requires strong type even though postgres takes integer as
+                            // varchar. setObject allows to set null values. If there are null values better use setObject
                             statement.setLong(1, student.id);
-                            statement.setString(2, student.Name);
-                            statement.setInt(3, student.Score);
-                            statement.setBoolean(4, student.Pass);
-                            statement.setString(5, student.Name);
-                            statement.setInt(6, student.Score);
-                            statement.setBoolean(7, student.Pass);
+                            statement.setObject(2, student.Name);
+                            statement.setObject(3, student.Score);
+                            statement.setObject(4, student.Pass);
+                            statement.setObject(5, student.Name);
+                            statement.setObject(6, student.Score);
+                            statement.setObject(7, student.Pass);
                         },
                         JdbcExecutionOptions.builder()
                                 .withBatchSize(1000)

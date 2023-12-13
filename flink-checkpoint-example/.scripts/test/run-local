@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# The docker compose file is in the currect repository
+# under ".scripts/docker/confluentinc/" directory
+SCRIPT_PATH="$(dirname -- "${BASH_SOURCE[0]}")"
+cd $SCRIPT_PATH/../../
+pwd
+
+export CHECKPOINT_INERVAL=60000
+export CHECKPOINT_TIMEOUT=3600000
+export MAX_CONCURRENT_CHECKPOINTS=1
+export CHECKPOINT_DIR="file:///home/song/Sandbox/flink-kafka-example/sink-checkpoints"
+
+export BOOTSTRAP_SERVER="localhost:9093"
+export SCHEMA_REGISTRY_URL="http://localhost:8081"
+export GROUP_ID="TEST_GROUP"
+export TOPIC_NAME="example-topic"
+
+mvn clean test -Dtest="DynamoDBSinkJobTest"

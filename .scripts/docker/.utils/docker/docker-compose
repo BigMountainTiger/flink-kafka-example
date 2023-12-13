@@ -1,0 +1,31 @@
+#!/bin/bash
+
+SCRIPT_PATH=$1
+cd $SCRIPT_PATH
+pwd
+
+WHAT=$2
+if [ -z "$WHAT" ]
+then
+    WHAT="up"
+    echo "Default to - docker compose up -d"
+fi
+
+case "$WHAT" in
+    "up")
+        docker compose up -d
+        ;;
+    "pull")
+        docker compose pull
+        ;;
+    "down")
+        docker compose down
+        ;;
+    *)
+        echo "Only the following operations are supported:"
+        echo "docker-compose up (default if not specified)"
+        echo "docker-compose pull"
+        echo "docker-compose down"
+        exit 1
+        ;;
+esac

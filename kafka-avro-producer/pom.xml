@@ -4,73 +4,59 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.song.example</groupId>
-	<artifactId>flink-checkpoint-example</artifactId>
+	<artifactId>kafka-avro-producer</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>Flink Quickstart Job</name>
+	<name>Kafka Avro Producer</name>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<flink.version>1.17.0</flink.version>
-		<target.java.version>11</target.java.version>
-		<scala.binary.version>2.12</scala.binary.version>
-		<maven.compiler.source>${target.java.version}</maven.compiler.source>
-		<maven.compiler.target>${target.java.version}</maven.compiler.target>
-		<junit.version>4.13.2</junit.version>
+		<kafka-version>3.6.1</kafka-version>
+		<confluent-version>5.5.0</confluent-version>
 		<log4j.version>2.17.1</log4j.version>
 	</properties>
 
+	<repositories>
+		<repository>
+			<!-- Confluent mvn repository -->
+			<id>confluent</id>
+			<url>https://packages.confluent.io/maven/</url>
+		</repository>
+	</repositories>
+
 	<dependencies>
-		<!-- flink -->
+
 		<dependency>
 			<groupId>org.apache.flink</groupId>
-			<artifactId>flink-streaming-java</artifactId>
-			<version>${flink.version}</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.flink</groupId>
-			<artifactId>flink-clients</artifactId>
-			<version>${flink.version}</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.flink</groupId>
-			<artifactId>flink-s3-fs-hadoop</artifactId>
-			<version>${flink.version}</version>
-			<scope>provided</scope>
+			<artifactId>flink-java</artifactId>
+			<version>1.17.2</version>
 		</dependency>
 
-		<!-- kafka -->
+
 		<dependency>
-			<groupId>org.apache.flink</groupId>
-			<artifactId>flink-avro-confluent-registry</artifactId>
-			<version>${flink.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.flink</groupId>
-			<artifactId>flink-connector-kafka</artifactId>
-			<version>${flink.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.json</groupId>
-			<artifactId>json</artifactId>
-			<version>20230227</version>
+			<groupId>org.apache.kafka</groupId>
+			<artifactId>kafka-clients</artifactId>
+			<version>${kafka-version}</version>
 		</dependency>
 
-		<!-- dynamodb -->
 		<dependency>
-			<groupId>org.apache.flink</groupId>
-			<artifactId>flink-connector-dynamodb</artifactId>
-			<version>4.1.0-1.17</version>
+			<groupId>io.confluent</groupId>
+			<artifactId>kafka-schema-registry-client</artifactId>
+			<version>${confluent-version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>io.confluent</groupId>
+			<artifactId>kafka-avro-serializer</artifactId>
+			<version>${confluent-version}</version>
 		</dependency>
 
 		<!-- junit -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>${junit.version}</version>
+			<version>4.13.2</version>
 			<scope>test</scope>
 		</dependency>
 
@@ -93,6 +79,7 @@
 			<version>${log4j.version}</version>
 			<scope>runtime</scope>
 		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -102,8 +89,8 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.1</version>
 				<configuration>
-					<source>${target.java.version}</source>
-					<target>${target.java.version}</target>
+					<source>11</source>
+					<target>11</target>
 				</configuration>
 			</plugin>
 
@@ -142,7 +129,7 @@
 									implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer" />
 								<transformer
 									implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-									<mainClass>com.song.example.DataStreamJob</mainClass>
+									<mainClass>com.song.example.KafkaAvroProducer</mainClass>
 								</transformer>
 							</transformers>
 						</configuration>

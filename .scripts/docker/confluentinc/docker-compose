@@ -1,0 +1,6 @@
+#!/bin/bash
+
+SCRIPT_PATH="$(dirname -- "${BASH_SOURCE[0]}")"
+EXE_PATH="$SCRIPT_PATH/../.utils/docker/docker-compose"
+
+$EXE_PATH $SCRIPT_PATH $@

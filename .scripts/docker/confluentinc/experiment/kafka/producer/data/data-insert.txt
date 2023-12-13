@@ -1,0 +1,7 @@
+{"id": "1", "data": null, "operation": "INSERT"}
+{"id": "2", "data": null, "operation": "INSERT"}
+{"id": "3", "data": null, "operation": "INSERT"}
+
+
+
+

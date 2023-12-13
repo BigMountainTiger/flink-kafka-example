@@ -1,0 +1,21 @@
+{
+    "type": "record",
+    "name": "test_record",
+    "fields": [
+        {
+            "name": "id",
+            "type": "string"
+        },
+        {
+            "name": "data",
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        {
+            "name": "operation",
+            "type": "string"
+        }
+    ]
+}
